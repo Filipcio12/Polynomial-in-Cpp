@@ -1,9 +1,11 @@
 #pragma once
 #include <map>
+#include <iostream>
 
 class Poly {
-    std::map <int, double> terms;
+    std::map <unsigned int, double> terms;
 
     public:
-        double& operator[](int index);
+        double& operator[](unsigned int index);
+        friend std::ostream& operator<<(std::ostream& os, const Poly& p);
 };
