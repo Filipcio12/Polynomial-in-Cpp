@@ -14,6 +14,8 @@ int main()
 	p2[1] = 3;
     p2[0] = 5;
 
+	p1 = p2;
+
     std::cout << p1 << "\n" << p2;
     return 0;
 }

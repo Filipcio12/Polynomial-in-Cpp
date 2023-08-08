@@ -10,7 +10,7 @@ std::ostream& operator<<(std::ostream& os, const Poly& p)
 {
     bool isFirst = true;
     for (auto term = p.terms.rbegin(); term != p.terms.rend(); term++) {
-        int order = term->first;
+        unsigned int order = term->first;
         double coefficient = term->second;
         char sign = 43 + 2*(coefficient < 0);
         (isFirst && coefficient < 0) ? os << sign : os << "";
@@ -21,4 +21,15 @@ std::ostream& operator<<(std::ostream& os, const Poly& p)
         isFirst = false;
     }
     return os;
+}
+
+Poly& Poly::operator=(const Poly& p)
+{
+    terms.clear();
+    for (auto term : p.terms) {
+        unsigned int index = term.first;
+        double value = term.second;
+        terms[index] = value;
+    }
+    return *this;
 }
