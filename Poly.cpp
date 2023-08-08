@@ -1,6 +1,16 @@
 #include "Poly.h"
 #include <cmath>
 
+Poly::Poly()
+{
+    terms.clear();
+}
+
+Poly::Poly(double p)
+{
+    terms[0] = p;
+}
+
 double& Poly::operator[](unsigned int index)
 {
     return terms[index];
@@ -27,9 +37,14 @@ Poly& Poly::operator=(const Poly& p)
 {
     terms.clear();
     for (auto term : p.terms) {
-        unsigned int index = term.first;
-        double value = term.second;
-        terms[index] = value;
+        terms[term.first] = term.second;
     }
+    return *this;
+}
+
+Poly& Poly::operator=(double p)
+{
+    terms.clear();
+    terms[0] = p;
     return *this;
 }
