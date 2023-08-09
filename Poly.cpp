@@ -30,6 +30,9 @@ std::ostream& operator<<(std::ostream& os, const Poly& p)
         unsigned int order = term->first;
         double coefficient = term->second;
         char sign = 43 + 2*(coefficient < 0);
+        if (coefficient == 0 && order > 0) {
+            continue;
+        }
         (isFirst && coefficient < 0) ? os << sign : os << "";
         (!isFirst) ? os << " " << sign << " " : os << "";
         (fabs(coefficient) != 1 || order == 0) ? os << fabs(coefficient) : os << "";
