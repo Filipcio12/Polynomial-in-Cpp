@@ -2,7 +2,7 @@
 headers = Poly.h
 
 # List your *.cpp files:
-sources = Poly.cpp main.cpp
+sources = Poly.cpp TestPoly.cpp
 
 # Specify name of your program:
 executable = myprogram
