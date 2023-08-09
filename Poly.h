@@ -21,4 +21,9 @@ class Poly {
         Poly operator-(const Poly& p) const;
         Poly operator-(double p) const;
         friend Poly operator-(double p1, const Poly& p2);
+        Poly operator-() const; //negation
+
+        Poly operator*(const Poly& p) const;
+        Poly operator*(double p) const;
+        friend Poly operator*(double p1, const Poly& p2);
 };

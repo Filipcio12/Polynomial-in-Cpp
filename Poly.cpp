@@ -139,3 +139,25 @@ Poly operator-(double p1, const Poly& p2)
     diff[0] += p1;
     return diff;
 }
+
+Poly Poly::operator-() const
+{
+    return 0 - *this;
+}
+
+Poly Poly::operator*(const Poly& p) const
+{
+    Poly product = 0;
+    for (auto t1 : terms) {
+        Poly m;
+        unsigned int o1 = t1.first;
+        double c1 = t1.second;
+        for (auto t2 : p.terms) {
+            unsigned int o2 = t2.first;
+            double c2 = t2.second;
+            m[o1 + o2] = c1 * c2;
+        }
+        product = product + m;
+    }
+    return product;
+}
