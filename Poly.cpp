@@ -56,7 +56,7 @@ Poly& Poly::operator=(double p)
     return *this;
 }
 
-Poly Poly::operator+(const Poly& p)
+Poly Poly::operator+(const Poly& p) const
 {
     Poly sum;
     auto t1 = terms.rbegin();
@@ -79,4 +79,60 @@ Poly Poly::operator+(const Poly& p)
         }
     }
     return sum;
+}
+
+Poly Poly::operator+(double p) const
+{
+    Poly sum = *this;
+    sum[0] += p;
+    return sum;
+}
+
+Poly operator+(double p1, const Poly& p2)
+{
+    Poly sum = p2;
+    sum[0] += p1;
+    return sum;
+}
+
+Poly Poly::operator-(const Poly& p) const
+{
+    Poly diff;
+    auto t1 = terms.rbegin();
+    auto t2 = p.terms.rbegin();
+    while (t1 != terms.rend() && t2 != p.terms.rend()) {
+        unsigned int o1 = t1->first, o2 = t2->first;
+        double c1 = t1->second, c2 = t2->second;
+        if (o1 == o2) {
+            diff[o1] = c1 - c2;
+            t1++;
+            t2++;
+        }
+        else if (o1 > o2) {
+            diff[o1] = c1;
+            t1++;
+        }
+        else {
+            diff[o2] = -c2;
+            t2++;
+        }
+    }
+    return diff;
+}
+
+Poly Poly::operator-(double p) const
+{
+    Poly diff = *this;
+    diff[0] -= p;
+    return diff;
+}
+
+Poly operator-(double p1, const Poly& p2)
+{
+    Poly diff = p2;
+    for (auto term : diff.terms) {
+        diff.terms[term.first] = -term.second;
+    }
+    diff[0] += p1;
+    return diff;
 }
