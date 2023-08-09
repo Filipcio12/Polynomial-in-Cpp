@@ -31,6 +31,6 @@ int main()
 	p2[2] = -6;
 	p2[1] = 3;
 
-	std::cout << p1 << "\n" << p2 << "\n" << 2 * p1<< "\n";
+	std::cout << p1 << "\n" << p1(1.5) << "\n";
     return 0;
 }

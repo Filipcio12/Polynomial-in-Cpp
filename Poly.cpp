@@ -173,3 +173,14 @@ Poly operator*(double p1, const Poly& p2)
 {
     return p2 * p1;
 }
+
+double Poly::operator()(double x) const
+{
+    double y = 0;
+    for (auto t : terms) {
+        unsigned int o = t.first;
+        double c = t.second;
+        y += c * pow(x, o);
+    }
+    return y;
+}
