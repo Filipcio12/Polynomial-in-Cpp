@@ -93,9 +93,10 @@ Poly Poly::operator+(double p) const
 
 Poly operator+(double p1, const Poly& p2)
 {
-    Poly sum = p2;
+    /*Poly sum = p2;
     sum[0] += p1;
-    return sum;
+    return sum;*/
+    return p2 + p1;
 }
 
 Poly Poly::operator-(const Poly& p) const
@@ -149,7 +150,7 @@ Poly Poly::operator*(const Poly& p) const
 {
     Poly product = 0;
     for (auto t1 : terms) {
-        Poly m;
+        Poly m = 0;
         unsigned int o1 = t1.first;
         double c1 = t1.second;
         for (auto t2 : p.terms) {
@@ -160,4 +161,15 @@ Poly Poly::operator*(const Poly& p) const
         product = product + m;
     }
     return product;
+}
+
+Poly Poly::operator*(double p) const
+{
+    Poly p1 = p;
+    return *this * p1;
+}
+
+Poly operator*(double p1, const Poly& p2)
+{
+    return p2 * p1;
 }
