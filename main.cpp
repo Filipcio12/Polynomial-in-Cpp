@@ -13,6 +13,6 @@ int main()
 	p2[2] = -6;
 	p2[1] = 3;
 
-    std::cout << p1 << "\n" << p2 << "\n";
+    std::cout << p1 << "\n" << p2 << "\n" << p1 + p2 << "\n";
     return 0;
 }

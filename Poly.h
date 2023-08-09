@@ -7,9 +7,12 @@ class Poly {
 
     public:
         Poly();
+        Poly(const Poly& p);
         Poly(double p);
         double& operator[](unsigned int index);
         friend std::ostream& operator<<(std::ostream& os, const Poly& p);
         Poly& operator=(const Poly& p);
         Poly& operator=(double p);
+        Poly operator+(const Poly& p);
+        Poly operator+(double p);
 };
