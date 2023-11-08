@@ -52,13 +52,6 @@ Poly& Poly::operator=(const Poly& p)
     return *this;
 }
 
-Poly& Poly::operator=(double p)
-{
-    terms.clear();
-    terms[0] = p;
-    return *this;
-}
-
 Poly Poly::operator+(const Poly& p) const
 {
     Poly sum;
@@ -84,18 +77,8 @@ Poly Poly::operator+(const Poly& p) const
     return sum;
 }
 
-Poly Poly::operator+(double p) const
-{
-    Poly sum = *this;
-    sum[0] += p;
-    return sum;
-}
-
 Poly operator+(double p1, const Poly& p2)
 {
-    /*Poly sum = p2;
-    sum[0] += p1;
-    return sum;*/
     return p2 + p1;
 }
 
@@ -124,26 +107,14 @@ Poly Poly::operator-(const Poly& p) const
     return diff;
 }
 
-Poly Poly::operator-(double p) const
-{
-    Poly diff = *this;
-    diff[0] -= p;
-    return diff;
-}
-
 Poly operator-(double p1, const Poly& p2)
 {
-    Poly diff = p2;
-    for (auto term : diff.terms) {
-        diff.terms[term.first] = -term.second;
-    }
-    diff[0] += p1;
-    return diff;
+    return p2 - p1;
 }
 
 Poly Poly::operator-() const
 {
-    return 0 - *this;
+    return 0.0 - *this;
 }
 
 Poly Poly::operator*(const Poly& p) const
@@ -161,12 +132,6 @@ Poly Poly::operator*(const Poly& p) const
         product = product + m;
     }
     return product;
-}
-
-Poly Poly::operator*(double p) const
-{
-    Poly p1 = p;
-    return *this * p1;
 }
 
 Poly operator*(double p1, const Poly& p2)
